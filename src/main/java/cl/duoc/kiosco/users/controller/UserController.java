@@ -1,6 +1,7 @@
 package cl.duoc.kiosco.users.controller;
 
-import cl.duoc.kiosco.users.dto.UserDTO;
+import cl.duoc.kiosco.users.dto.UserRequestDTO;
+import cl.duoc.kiosco.users.dto.UserResponseDTO;
 import cl.duoc.kiosco.users.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,28 +18,28 @@ public class UserController {
     private UserService userService;
 
     @GetMapping
-    public ResponseEntity<List<UserDTO>> getUsers(){
+    public ResponseEntity<List<UserResponseDTO>> getUsers(){
         return ResponseEntity.ok(userService.findAllUsers());
     }
 
     @PostMapping
-    public ResponseEntity<UserDTO> postUser(@Valid @RequestBody UserDTO newUser) {
-        UserDTO user = userService.makeUser(newUser);
+    public ResponseEntity<UserResponseDTO> postUser(@Valid @RequestBody UserRequestDTO newUser) {
+        UserResponseDTO user = userService.makeUser(newUser);
         return ResponseEntity.status(HttpStatus.CREATED).body(user);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserDTO> getUser(@PathVariable long id){
+    public ResponseEntity<UserRequestDTO> getUser(@PathVariable long id){
         return ResponseEntity.ok(userService.findUserById(id));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<UserDTO> putUser(@PathVariable long id, @RequestBody UserDTO user){
+    public ResponseEntity<UserResponseDTO> putUser(@PathVariable long id, @RequestBody UserRequestDTO user){
         return ResponseEntity.ok(userService.updateUser(id,user));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<UserDTO> deleteUser(@PathVariable long id){
+    public ResponseEntity<UserRequestDTO> deleteUser(@PathVariable long id){
         userService.deleteUser(id);
         return ResponseEntity.noContent().build();
     }
