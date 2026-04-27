@@ -1,0 +1,1 @@
+INSERT INTO `kiosco_users`.`users` (`active`, `email`, `password`) VALUES (b'1', 'rob.morenop@profesor.duoc.cl', 'clave_segura');
