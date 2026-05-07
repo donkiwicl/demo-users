@@ -25,4 +25,8 @@ public class User {
     @NotNull(message = "Debe indicarse si esta activo o no")
     @Column(nullable = false)
     private boolean active;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 20)
+    private UserRole role;
 }

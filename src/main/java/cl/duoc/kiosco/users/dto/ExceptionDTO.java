@@ -20,4 +20,11 @@ public class ExceptionDTO {
         this.date = (new Date()).toString();
         this.message = exception.getMessage();
     }
+
+    public ExceptionDTO(HttpStatus httpStatus, String message) {
+        this.code = httpStatus.value();
+        this.type = httpStatus.getReasonPhrase();
+        this.date = (new Date()).toString();
+        this.message = message;
+    }
 }
