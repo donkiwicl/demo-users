@@ -1,0 +1,12 @@
+
+services:
+  mysql:
+    ports:
+      - "3306:3306"
+    restart: unless-stopped
+
+  app:
+    restart: unless-stopped
+    environment:
+      JAVA_OPTS: -Xms256m -Xmx512m
+

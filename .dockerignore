@@ -1,0 +1,13 @@
+.git
+.idea
+app.log
+logs
+README.md
+target
+*.iml
+.DS_Store
+.env
+.env.*
+init.sh
+clean.sh
+
