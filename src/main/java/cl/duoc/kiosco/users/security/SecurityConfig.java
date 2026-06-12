@@ -15,6 +15,16 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+/**
+ * Configuración central de Spring Security.
+ *
+ * Define una API REST sin estado (STATELESS): no hay sesiones de servidor; la
+ * identidad viaja en cada petición dentro del JWT. Reglas de acceso:
+ *   - /auth/**            -> público (login)
+ *   - GET  /users/**      -> requiere estar autenticado (cualquier rol)
+ *   - POST/PUT/DELETE     -> requiere rol ADMIN
+ *   - cualquier otra ruta -> requiere autenticación
+ */
 @Configuration
 @EnableMethodSecurity
 @RequiredArgsConstructor

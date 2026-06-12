@@ -4,18 +4,23 @@ import cl.duoc.kiosco.users.dto.UserRequestDTO;
 import cl.duoc.kiosco.users.dto.UserResponseDTO;
 import cl.duoc.kiosco.users.service.UserService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Controlador REST de usuarios. Expone el CRUD bajo /api/v1/users.
+ * La autorización (quién puede llamar cada endpoint) se define en SecurityConfig.
+ */
 @RestController
 @RequestMapping("/users")
+@RequiredArgsConstructor
 public class UserController {
-    @Autowired
-    private UserService userService;
+
+    private final UserService userService;
 
     @GetMapping
     public ResponseEntity<List<UserResponseDTO>> getUsers(){

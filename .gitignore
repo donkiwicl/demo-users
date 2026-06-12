@@ -36,3 +36,7 @@ build/
 .env
 .env.*
 
+# Archivos de log (se generan en tiempo de ejecución, no se versionan)
+*.log
+logs/
+

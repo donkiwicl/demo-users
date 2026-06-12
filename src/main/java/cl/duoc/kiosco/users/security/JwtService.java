@@ -11,6 +11,15 @@ import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.Map;
 import java.util.function.Function;
+
+/**
+ * Servicio responsable de generar y validar JSON Web Tokens (JWT).
+ *
+ * Un JWT tiene 3 partes separadas por puntos: header.payload.firma.
+ * Aquí se firma con HMAC-SHA usando una clave secreta (app.jwt.secret); cualquiera
+ * puede leer el payload, pero solo quien tiene la clave puede generar una firma
+ * válida, por eso no debe filtrarse el secreto.
+ */
 @Service
 public class JwtService {
     @Value("${app.jwt.secret}")
